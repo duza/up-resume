@@ -38,6 +38,7 @@ def reclog(info):
         logfile.write(info)
 
 def updateresume():
+''' Function try update resume and return time of updating '''
     try:
         # start virtual display
         display = Display(visible=0, size=(640, 480))
@@ -69,7 +70,7 @@ def updateresume():
         refreshjun.click()
         # exit from session
         logout = browser.get(u'http://jobs.tut.by/account/logout')
-        # from browser
+        # exit from browser
         browser.quit()
         display.stop()
         now = datetime.now()
@@ -98,7 +99,7 @@ def main():
                     now = updateresume() or previoustime
                     file.seek(0) # turn to top file that store datetime
                     pickle.dump(now, file) # write new datetime in file
-                    return "PLZ, UPDATE ANN!"
+                    return "Pls, Update resume!"
                 else:
                     reclog('Little time has passed. Please wait...\r\n')
 #                    time.sleep((timedelta(minutes=240)-diff).total_seconds())
