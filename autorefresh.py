@@ -23,6 +23,8 @@ def givelogin():
     return table
 
 def note_desktop(s):
+    ''' This function makes possible to notify user when script
+    is running. It takes one arg string s and show it on desktop. '''
     pynotify.init("Resume")
     n = pynotify.Notification('Resume on tut.by',s)
     n.show()
