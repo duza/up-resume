@@ -33,6 +33,7 @@ def path_to_file():
     return os.path.abspath(os.path.dirname(__file__))
 
 def reclog(info):
+    ''' Open logfile an write there information '''
     with open(path_to_file()+'/logfile','ab') as logfile:
         logfile.write(info)
 
@@ -84,15 +85,19 @@ def updateresume():
 def main():
     while True:
         try:
+# Open file which store datetime previous updating resume
             with open(path_to_file()+'/temp', 'r+b') as file:
-                previoustime = pickle.load(file)
-                now = datetime.now()
-                diff = now - previoustime
-                if diff > timedelta(minutes=720):
-                    reclog("Already passed 12 hours. Update announcment.\r\n")
+                previoustime = pickle.load(file) #loading prev datetime
+                now = datetime.now() # current time
+                diff = now - previoustime # how much time has passed
+                if diff > timedelta(minutes=300): # if diff > 5 hours
+# Then write that Updatin of resume is possible 
+                    reclog("Already passed 5 hours. Update announcment.\r\n")
+# If function updateresume executed without errors now equal current 
+#time - time of updating resume else time remains the same
                     now = updateresume() or previoustime
-                    file.seek(0)
-                    pickle.dump(now, file)
+                    file.seek(0) # turn to top file that store datetime
+                    pickle.dump(now, file) # write new datetime in file
                     return "PLZ, UPDATE ANN!"
                 else:
                     reclog('Little time has passed. Please wait...\r\n')
