@@ -12,6 +12,12 @@ import pynotify
 
 
 def givelogin():
+    ''' This function return a dictionary 'table' that have
+    email and pass from file 't389.c3m' which store in
+    /think directory.
+       table['email'] -> email
+       table['pass'] -> password
+    '''
     with open(path_to_file()+'/../think/t389.c3m','rb') as file:
         table = pickle.load(file)
     return table
