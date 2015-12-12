@@ -18,7 +18,7 @@ def givelogin():
        table['email'] -> email
        table['pass'] -> password
     '''
-    with open(path_to_file()+'/../think/t389.c3m','rb') as file:
+    with open(path_to_file()+'/../../think/t389.c3m','rb') as file:
         table = pickle.load(file)
     return table
 
@@ -38,7 +38,7 @@ def reclog(info):
         logfile.write(info)
 
 def updateresume():
-''' Function try update resume and return time of updating '''
+'''Function try update resume and return time of updating'''
     try:
         # start virtual display
         display = Display(visible=0, size=(640, 480))
