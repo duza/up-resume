@@ -38,7 +38,7 @@ def reclog(info):
         logfile.write(info)
 
 def updateresume():
-'''Function try update resume and return time of updating'''
+    '''Function try update resume and return time of updating'''
     try:
         # start virtual display
         display = Display(visible=0, size=(640, 480))
@@ -86,7 +86,7 @@ def updateresume():
 def main():
     while True:
         try:
-# Open file which store datetime previous updating resume
+            # Open file which store datetime previous updating resume
             with open(path_to_file()+'/temp', 'r+b') as file:
                 previoustime = pickle.load(file) #loading prev datetime
                 now = datetime.now() # current time
